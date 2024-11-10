@@ -33,3 +33,17 @@ echo -e "${BOLD_ITALIC_BLUE}Downloading background image...${RESET}"
 wget -O "$BACKGROUND_PATH" "$BACKGROUND_URL" > /dev/null 2>&1 && handle_success "Background image downloaded." || handle_error "Failed to download background image."
 echo -e "${BOLD_ITALIC_BLUE}Setting background image as wallpaper...${RESET}"
 gsettings set org.gnome.desktop.background picture-uri "file://$BACKGROUND_PATH" && handle_success "Background set as wallpaper." || handle_error "Failed to set background as wallpaper."
+
+echo -e "${BOLD_ITALIC_BLUE}Installing Oh My Zsh...${RESET}"
+yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && handle_success "Oh My Zsh installed." || handle_error "Failed to install Oh My Zsh."
+
+echo -e "${BOLD_ITALIC_BLUE}Installing Powerlevel10k theme...${RESET}"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_CUSTOM/themes/powerlevel10k" && handle_success "Powerlevel10k installed." || handle_error "Failed to install Powerlevel10k."
+
+echo -e "${BOLD_ITALIC_BLUE}Setting Powerlevel10k as default theme...${RESET}"
+sed -i 's/^ZSH_THEME=".*"/ZSH_THEME="powerlevel10k/powerlevel10k"/' ~/.zshrc && handle_success "Powerlevel10k set as default theme." || handle_error "Failed to set Powerlevel10k theme."
+
+echo -e "${BOLD_ITALIC_BLUE}Setting up Powerlevel10k auto configuration...${RESET}"
+yes | p10k configure && handle_success "Powerlevel10k auto-configuration completed." || handle_error "Failed to configure Powerlevel10k."
+
+echo -e "${BOLD_ITALIC_GREEN}Setup complete. Please restart your terminal or source ~/.zshrc to apply the changes.${RESET}"

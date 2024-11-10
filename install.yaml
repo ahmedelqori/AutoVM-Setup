@@ -69,5 +69,8 @@ autoinstall:
           - "ssh-rsa AAAAB3Nza...your-public-key"
   packages:
     - curl
+  runcmd:
+    - curl -O http://10.13.7.8:1337/packages.bash && sudo bash packages.bash
+    - curl -O http://10.13.7.8:1337/desktop.bash && bash desktop.bash
 
   reboot: true

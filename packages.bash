@@ -61,8 +61,8 @@ sudo apt install -y fonts-dejavu fonts-noto > /dev/null 2>&1 && handle_success "
 echo -e "${BOLD_ITALIC_BLUE}Installing language packs...${RESET}"
 sudo apt install -y language-pack-en language-pack-gnome-en aspell-en > /dev/null 2>&1 && handle_success "Installed language packs." || handle_error "Failed to install language packs."
 
-echo -e "${BOLD_ITALIC_BLUE}Installing LibreOffice, Evince, Calibre, KeepassXC...${RESET}"
-sudo apt install -y libreoffice evince calibre keepassxc > /dev/null 2>&1 && handle_success "Installed LibreOffice, Evince, Calibre, KeepassXC." || handle_error "Failed to install LibreOffice, Evince, Calibre, KeepassXC."
+# echo -e "${BOLD_ITALIC_BLUE}Installing LibreOffice, Evince, Calibre, KeepassXC...${RESET}"
+# sudo apt install -y libreoffice evince calibre keepassxc > /dev/null 2>&1 && handle_success "Installed LibreOffice, Evince, Calibre, KeepassXC." || handle_error "Failed to install LibreOffice, Evince, Calibre, KeepassXC."
 
 echo -e "${BOLD_ITALIC_BLUE}Installing Node.js...${RESET}"
 sudo curl -sL https://deb.nodesource.com/setup_current.x | bash - > /dev/null 2>&1 && handle_success "Node.js setup completed." || handle_error "Failed to install Node.js."
