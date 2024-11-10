@@ -31,6 +31,12 @@ VDI_PATH="$DISK_PATH/vm/$VM_NAME.vdi"
 /usr/bin/VBoxManage storageattach "$VM_NAME" --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium "$ISO_PATH"
 
 /usr/bin/VBoxManage modifyvm "$VM_NAME" --audio-driver "$VM_AUDIO" --clipboard bidirectional
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audio pulse      
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audioout on 
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audioin on        
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audiocontroller hda 
+
+/usr/bin/VBoxManage setextradata "$VM_NAME" GUI/ShowMiniToolBar no  
 
 /usr/bin/VBoxManage modifyvm "$VM_NAME" --boot1 dvd --boot2 disk --boot3 none --boot4 none
 
