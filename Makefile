@@ -22,7 +22,8 @@ VBOX:
 
 SERVER:
 	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Go to: \n\t$(BOLD_ITALIC_GREEN)http://$(IP):1337/install.yaml$(RESET)"
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this File:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/packages.bash && sudo packages.bash$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this File For Packages:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/packages.bash && sudo bash packages.bash$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this File For Customize Ubuntu:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/desktop.bash && bash desktop.bash$(RESET)"
 	@python3 -m http.server 1337 > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Server is running at http://$(IP):1337$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Server failed to start!$(RESET)" >> $(LOG_FILE)
 
 help:
@@ -39,4 +40,4 @@ clean:
 
 logs:
 	@echo "$(BOLD_ITALIC_YELLOW)Displaying logs...$(RESET)"
-	@cat $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)No logs available!$(RESET)"
+	@cat $(LOG_FILE) 2> /dev/null || echo "$(BOLD_ITALIC_RED)No logs available!$(RESET)"
