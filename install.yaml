@@ -1,0 +1,135 @@
+autoinstall:
+  version: 1
+
+  identity:
+    hostname: leet
+    username: meedivo
+    password: "$6$K5wAdqbN2hxTrk68$JLORehtY/RCCVCA0liHdxgdekcs24trQvilkTFAPueWayLkv2Y8lJut95QUsjT6ExWtp.n3CYZiS6EXMZU4Kh1"
+
+  locale: en_US.UTF-8
+  timezone: Africa/Casablanca
+
+  keyboard:
+    layout: us
+    variant: ""
+
+  network:
+    version: 2
+    ethernets:
+      eth0:
+        dhcp4: true
+  storage:
+  layout:
+    name: custom
+  config:
+    - type: disk
+      id: disk0
+      match:
+        size: largest
+      ptable: gpt
+      wipe: superblock
+      preserve: false
+      name: ""
+      grub_device: true
+
+    - type: partition
+      id: swap-partition
+      device: disk0
+      size: 2G
+    - type: format
+      id: swap-format
+      fstype: swap
+      volume: swap-partition
+
+    - type: partition
+      id: home-partition
+      device: disk0
+      size: -1
+    - type: format
+      id: home-format
+      fstype: ext4
+      volume: home-partition
+      label: home
+    - type: mount
+      path: /home
+      device: home-format
+
+  ssh:
+    install-server: true
+    authorized-keys:
+      - "ssh-rsa AAAAB3Nza...your-public-key"
+    allow-pw: no
+
+  user-data:
+    users:
+      - name: meedivo
+        gecos: "Primary User"
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        ssh_authorized_keys:
+          - "ssh-rsa AAAAB3Nza...your-public-key"
+
+  packages:
+    - vim
+    - htop
+    - curl
+    - git
+    - net-tools
+
+    - build-essential
+    - gcc
+    - g++
+    - make
+
+    - python3
+    - python3-pip
+    - python3-venv
+    - python3-dev
+
+    - nodejs
+    - npm
+
+    # Docker
+    - docker.io
+
+  # # Configure Snaps (Optional)
+  # snaps:
+  #   - name: microk8s
+  #     classic: true
+  #   - name: certbot
+
+  # # Disable Default Services
+  # disable_services:
+  #   - snapd.seeded.service
+  #   - lxd.service
+
+  # late-commands:
+  #   # Update package
+  #   - "curtin in-target --target=/target apt-get update"
+  #   - "curtin in-target --target=/target apt-get -y install wget curl"
+
+  #   # Install Google Chrome
+  #   - "curtin in-target --target=/target wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable.deb"
+  #   - "curtin in-target --target=/target dpkg -i /tmp/google-chrome-stable.deb"
+  #   - "curtin in-target --target=/target apt-get -f -y install"
+
+  #   # Install Visual Studio Code
+  #   - "curtin in-target --target=/target wget -qO- https://packages.microsoft.com/keys/microsoft.asc | apt-key add -"
+  #   - "curtin in-target --target=/target wget -q https://packages.microsoft.com/repos/vscode stable main"
+  #   - "curtin in-target --target=/target apt-get update"
+  #   - "curtin in-target --target=/target apt-get -y install code"
+
+  #   # Install Discord
+  #   - "curtin in-target --target=/target wget https://discord.com/api/download?platform=linux&format=deb -O /tmp/discord.deb"
+  #   - "curtin in-target --target=/target dpkg -i /tmp/discord.deb"
+  #   - "curtin in-target --target=/target apt-get -f -y install"
+
+  #   # Install Postman
+  #   - "curtin in-target --target=/target wget https://dl.pstmn.io/download/latest/linux64 -O /tmp/Postman.tar.gz"
+  #   - "curtin in-target --target=/target tar -xvzf /tmp/Postman.tar.gz -C /opt"
+  #   - "curtin in-target --target=/target ln -s /opt/Postman/Postman /usr/local/bin/postman"
+
+  #   # Set screen resolution to 1920x1080
+  #   - "curtin in-target --target=/target xrandr --output Virtual1 --mode 1920x1080"
+
+  # Reboot After Installation
+  reboot: true
