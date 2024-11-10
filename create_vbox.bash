@@ -11,7 +11,7 @@ VM_CPUS=$CPU
 VM_VRAM=$VRAM
 
 ENABLE_3D="on"
-VM_AUDIO="alsa"
+VM_AUDIO="pulse"
 VM_BOOT_ORDER="dvd, disk"
 
 VDI_PATH="$DISK_PATH/vm/$VM_NAME.vdi"
@@ -30,11 +30,11 @@ VDI_PATH="$DISK_PATH/vm/$VM_NAME.vdi"
 /usr/bin/VBoxManage storagectl "$VM_NAME" --name "IDE Controller" --add ide
 /usr/bin/VBoxManage storageattach "$VM_NAME" --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium "$ISO_PATH"
 
-/usr/bin/VBoxManage modifyvm "$VM_NAME" --audio-driver "$VM_AUDIO" --clipboard bidirectional
-/usr/bin/VBoxManage modifyvm "$VM_NAME" --audio pulse      
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --clipboard bidirectional
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audio $VM_AUDIO      
 /usr/bin/VBoxManage modifyvm "$VM_NAME" --audioout on 
 /usr/bin/VBoxManage modifyvm "$VM_NAME" --audioin on        
-/usr/bin/VBoxManage modifyvm "$VM_NAME" --audiocontroller hda 
+/usr/bin/VBoxManage modifyvm "$VM_NAME" --audiocontroller ICHAC97 
 
 /usr/bin/VBoxManage setextradata "$VM_NAME" GUI/ShowMiniToolBar no  
 

@@ -33,4 +33,3 @@ echo -e "${BOLD_ITALIC_BLUE}Downloading background image...${RESET}"
 wget -O "$BACKGROUND_PATH" "$BACKGROUND_URL" > /dev/null 2>&1 && handle_success "Background image downloaded." || handle_error "Failed to download background image."
 echo -e "${BOLD_ITALIC_BLUE}Setting background image as wallpaper...${RESET}"
 gsettings set org.gnome.desktop.background picture-uri "file://$BACKGROUND_PATH" && handle_success "Background set as wallpaper." || handle_error "Failed to set background as wallpaper."
-
