@@ -7,7 +7,7 @@ RESET               := \033[0m
 
 IP := $(shell hostname -I | awk '{print $$1}')
 
-all:  SERVER 
+all: VBOX SERVER 
 
 VBOX:
 	@echo "$(BOLD_ITALIC_CYAN)Creating Virtual Machine...$(RESET)"

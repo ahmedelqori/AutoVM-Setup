@@ -67,24 +67,62 @@ autoinstall:
         sudo: ALL=(ALL) NOPASSWD:ALL
         ssh_authorized_keys:
           - "ssh-rsa AAAAB3Nza...your-public-key"
-
   packages:
-    - vim
-    - htop
+    - build-essential
+    - net-tools
     - curl
     - git
-    - net-tools
+    - vim
     - zsh
-
-    - build-essential
-    - gcc
-    - g++
-    - make
-
+    - htop
+    - ubuntu-gnome-desktop
+    - gnome-tweaks
+    - gnome-shell-extensions
     - python3
     - python3-pip
     - python3-venv
     - python3-dev
-
+    - openjdk-11-jdk
+    - clang
+    - nginx
+    - apache2
     - docker.io
+    - docker-compose
+    - postgresql
+    - mysql-server
+    - redis-server
+    - gimp
+    - vlc
+    - ffmpeg
+    - inkscape
+    - blender
+    - openssh-server
+    - openssh-client
+    - nfs-common
+    - samba
+    - ftp
+    - telnet
+    - nmap
+    - traceroute
+    - ufw
+    - fail2ban
+    - cryptsetup
+    - gpg
+    - openssl
+    - tmux
+    - wget
+    - unzip
+    - tar
+    - snapd
+    - flatpak
+    - fonts-dejavu
+    - fonts-noto
+    - language-pack-en
+    - language-pack-gnome-en
+    - aspell-en
+    - libreoffice
+    - evince
+    - calibre
+    - keepassxc
+
   reboot: true
