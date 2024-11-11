@@ -23,14 +23,38 @@ A simple and customizable Bash script for setting up VirtualBox virtual machines
 
 ### Installation
 
-1. Clone this repository:
+#### 1- Clone this repository:
 
-   ```bash
-   git clone https://github.com/ahmedelqori/AutoVM-Setup.git
-   cd AutoVM-Setup
-   ```
+```bash
+git clone https://github.com/ahmedelqori/AutoVM-Setup.git
+cd AutoVM-Setup
+```
 
-2. Make Project
+#### 2- Change Env Variables:
+
+```bash
+    vim .env || code .env
+    - Change all you need
+```
+
+```bash
+# Name Of Your VM
+    NAME=meedivo
+# Size with megabytes
+    SIZE=40000
+# Number of cores
+    CPU=10
+# RAM with megabytes
+    RAM=10240
+# Virtual Memory with mb
+    VRAM=128
+# Path of your vm
+    PATH=/goinfre/ael-qori
+# Path of your iso
+    ISO=/goinfre/ael-qori/iso/ubuntu.iso
+```
+
+#### 3- Make Project
 
 ![make project](imgs/make.png)
 
@@ -38,7 +62,7 @@ A simple and customizable Bash script for setting up VirtualBox virtual machines
     http://[your_ip]:1337/install.yaml # this url for automate installaion
 ```
 
-3. Steps
+#### 4- Steps
 
 ![step_1](imgs/step_1.png)
 ![step_2](imgs/step_2.png)
@@ -46,13 +70,18 @@ A simple and customizable Bash script for setting up VirtualBox virtual machines
 ![step_4](imgs/step_4.png)
 ![step_5](imgs/step_5.png)
 ![step_6](imgs/step_6.png)
-- Use URL in Terminal where u run make of run ```make SERVER``` and use first link
-![step_7](imgs/step_7.png)
-![step_8](imgs/step_8.png)
+
+- Use URL in Terminal where u run make of run `make SERVER` and use first link
+  ![step_7](imgs/step_7.png)
+  ![step_8](imgs/step_8.png)
 
 4. install packages
 
-- Password in make case is ```password: 1```
-![step_9](imgs/step_9.png)
+- Password in make case is `password: 1`
+  ![step_9](imgs/step_9.png)
 - look at teminal where u run make and use the URL for packages
-![step_10](imgs/step_10.png)
+  ![step_10](imgs/step_10.png)
+- look at teminal where u run make and use the URL for Desktop
+  ![step_12](imgs/step_12.png)
+- Result
+  ![result](imgs/step_13.png)
