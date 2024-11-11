@@ -10,7 +10,7 @@ BACKGROUND_YELLOW   := \033[48;5;226m
 RESET               := \033[0m
 
 IP := $(shell hostname -I | awk '{print $$1}')
-LOG_FILE := makefile.log
+LOG_FILE := logs/makefile.log
 
 .PHONY: all VBOX SERVER help clean logs
 
@@ -18,12 +18,13 @@ all:  VBOX SERVER
 
 VBOX:
 	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_CYAN)Creating Virtual Machine...$(RESET)"
-	@bash create_vbox.bash > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Virtual Machine created successfully!$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Error in VM creation!$(RESET)" >> $(LOG_FILE)
+	@bash tools/create_vbox.bash > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Virtual Machine created successfully!$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Error in VM creation!$(RESET)" >> $(LOG_FILE)
 
 SERVER:
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Go to: \n\t$(BOLD_ITALIC_GREEN)http://$(IP):1337/install.yaml$(RESET)"
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this File For Packages:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/packages.bash && sudo bash packages.bash$(RESET)"
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this File For Customize Ubuntu:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/desktop.bash && bash desktop.bash$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)URL: \n\t$(BOLD_ITALIC_GREEN)http://$(IP):1337/install.yaml$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this For Packages:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/packages.bash && sudo bash packages.bash$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this For Customize Ubuntu:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/desktop.bash && bash desktop.bash$(RESET)"
+	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)\t\t >> Keep it open << \n$(RESET)"
 	@python3 -m http.server 1337 > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Server is running at http://$(IP):1337$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Server failed to start!$(RESET)" >> $(LOG_FILE)
 
 help:

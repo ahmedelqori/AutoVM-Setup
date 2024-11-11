@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./.env
+source .env
 
 DISK_PATH=$PATH
 VM_NAME=$NAME

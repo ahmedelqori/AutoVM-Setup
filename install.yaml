@@ -57,7 +57,7 @@ autoinstall:
   ssh:
     install-server: true
     authorized-keys:
-      - "ssh-rsa AAAAB3Nza...your-public-key"
+      - "ssh-rsa ...your-public-key"
     allow-pw: no
 
   user-data:
@@ -66,11 +66,7 @@ autoinstall:
         gecos: "Primary User"
         sudo: ALL=(ALL) NOPASSWD:ALL
         ssh_authorized_keys:
-          - "ssh-rsa AAAAB3Nza...your-public-key"
+          - "ssh-rsa ...your-public-key"
   packages:
     - curl
-  runcmd:
-    - curl -O http://10.13.7.8:1337/packages.bash && sudo bash packages.bash
-    - curl -O http://10.13.7.8:1337/desktop.bash && bash desktop.bash
-
   reboot: true
