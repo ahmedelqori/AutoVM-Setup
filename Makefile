@@ -17,13 +17,13 @@ LOG_FILE := logs/makefile.log
 all:  VBOX SERVER 
 
 VBOX:
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_CYAN)Creating Virtual Machine...$(RESET)"
+	@echo "$(BOLD_ITALIC_CYAN)Creating Virtual Machine...$(RESET)"
 	@bash tools/create_vbox.bash > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Virtual Machine created successfully!$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Error in VM creation!$(RESET)" >> $(LOG_FILE)
 
 SERVER:
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)URL: \n\t$(BOLD_ITALIC_GREEN)http://$(IP):1337/install.yaml$(RESET)"
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this For Packages:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/packages.bash && sudo bash packages.bash$(RESET)"
-	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)Run this For Customize Ubuntu:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/desktop.bash && bash desktop.bash$(RESET)"
+	@echo "$(BOLD_ITALIC_RED)URL: \n\t$(BOLD_ITALIC_GREEN)http://$(IP):1337/install.yaml$(RESET)"
+	@echo "$(BOLD_ITALIC_RED)Run this For Packages:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/packages.bash && sudo bash packages.bash$(RESET)"
+	@echo "$(BOLD_ITALIC_RED)Run this For Customize Ubuntu:\n\tcurl -O $(BOLD_ITALIC_GREEN)http://$(IP):1337/tools/desktop.bash && bash desktop.bash$(RESET)"
 	@echo "$(FLASH)$(BOLD)$(BOLD_ITALIC_RED)\t\t >> Keep it open << \n$(RESET)"
 	@python3 -m http.server 1337 > /dev/null 2>&1 && echo "$(BOLD_ITALIC_GREEN)Server is running at http://$(IP):1337$(RESET)" >> $(LOG_FILE) || echo "$(BOLD_ITALIC_RED)Server failed to start!$(RESET)" >> $(LOG_FILE)
 
