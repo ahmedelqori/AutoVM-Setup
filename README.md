@@ -20,6 +20,7 @@ A simple and customizable Bash script for setting up VirtualBox virtual machines
 - [VirtualBox](https://www.virtualbox.org/) installed
 - Bash shell (available on macOS, Linux, or Windows via WSL)
 - Python3 for server hosting
+- Make for run project
 
 ### Installation
 
@@ -58,7 +59,7 @@ cd AutoVM-Setup
 
 - Change Here hostname and username and put hashedpassword of your password use that https://mkpasswd.stravers.net/
   ![yaml_1](imgs/yaml_1.png)
- - Here just update name with username you set before
+- Here just update name with username you set before
   ![yaml_2](imgs/yaml_2.png)
 
 #### 4- Make Project
@@ -68,11 +69,13 @@ cd AutoVM-Setup
 ```
     http://[your_ip]:1337/install.yaml # this url for automate installaion
 ```
+
 #### 5- Make File
-``` bash
+
+```bash
 # use for help
         make help
-# for logs 
+# for logs
         make log
 # for start server
         make server
