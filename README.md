@@ -54,22 +54,35 @@ cd AutoVM-Setup
     ISO=/goinfre/ael-qori/iso/ubuntu.iso
 ```
 
-#### 2- Change Yaml:
+#### 3- Change Yaml:
 
 - Change Here hostname and username and put hashedpassword of your password use that https://mkpasswd.stravers.net/
   ![yaml_1](imgs/yaml_1.png)
  - Here just update name with username you set before
   ![yaml_2](imgs/yaml_2.png)
 
-#### 3- Make Project
+#### 4- Make Project
 
 ![make project](imgs/make.png)
 
 ```
     http://[your_ip]:1337/install.yaml # this url for automate installaion
 ```
+#### 5- Make File
+``` bash
+# use for help
+        make help
+# for logs 
+        make log
+# for start server
+        make server
+# for create vm
+        make VBOX
+# for remove logs
+        make clean
+```
 
-#### 4- Steps
+#### 6- Steps
 
 ![step_1](imgs/step_1.png)
 ![step_2](imgs/step_2.png)
